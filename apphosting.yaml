@@ -26,3 +26,9 @@ env:
     secret: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
   - variable: CLERK_SECRET_KEY
     secret: CLERK_SECRET_KEY
+  - variable: FB_PROJECT_ID
+    secret: FB_PROJECT_ID
+  - variable: FB_PRIVATE_KEY
+    secret: FB_PRIVATE_KEY
+  - variable: FB_CLIENT_EMAIL
+    secret: FB_CLIENT_EMAIL
