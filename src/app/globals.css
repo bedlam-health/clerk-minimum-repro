@@ -1,0 +1,33 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+@import 'tailwindcss';
+:root {
+  --steelblue: #2d5c80;
+  --rosered: #a12d44;
+  --carrotorange: #ec9623;
+  --applegreen: #8bb53a;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--font-playfair-display), "Times New Roman", Times, serif;
+  }
+  /* h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-xl;
+  } */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
