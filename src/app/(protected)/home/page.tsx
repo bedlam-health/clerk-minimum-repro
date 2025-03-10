@@ -4,6 +4,7 @@ import { ProviderAvailabilityCard } from "./components/ProviderAvailability"
 import { ProfileDialog } from "./components/ProfileDialog"
 export default async function DashboardPage() {
   const { posts, error } = await fetchRecentPosts()
+  console.log(posts)
   if (error) {
     console.error(error)
   }
