@@ -121,8 +121,8 @@ const Education = ({
         <DialogDescription>
           We&apos;re working on it! Let us know what other features you want to
           see{" "}
-          <Link href="mailto:support@bedlamconnect.com">
-            support@bedlamconnect.com
+          <Link href="mailto:support@bedlamhealth.com">
+            support@bedlamhealth.com
           </Link>
         </DialogDescription>
       </Dialog>

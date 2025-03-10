@@ -38,6 +38,7 @@ function AppNavbar() {
   const router = useRouter()
   const [profileStatus, setProfileStatus] = useState({
     isProfileComplete: false,
+    hasProfileFetchError: false,
     loading: true,
   })
 
@@ -45,18 +46,20 @@ function AppNavbar() {
     setProfileStatus((prev) => ({ ...prev, loading: true }))
     try {
       const response = await fetch("/api/user/profile")
-      if (!response.ok) {
-        throw new Error("Failed to fetch profile status")
-      }
       const data = await response.json()
       console.log(data)
       setProfileStatus({
         isProfileComplete: !!data?.user?.isProfileComplete,
+        hasProfileFetchError: response.ok,
         loading: false,
       })
     } catch (error) {
       console.error("Error fetching profile status:", error)
-      setProfileStatus((prev) => ({ ...prev, loading: false }))
+      setProfileStatus((prev) => ({
+        ...prev,
+        loading: false,
+        hasProfileFetchError: true,
+      }))
     }
   }
 
@@ -80,6 +83,20 @@ function AppNavbar() {
       return (
         <DropdownItem disabled>
           <DropdownLabel>Loading...</DropdownLabel>
+        </DropdownItem>
+      )
+    }
+
+    if (!profileStatus.hasProfileFetchError) {
+      return (
+        <DropdownItem
+          onClick={() => router.push("/profile")}
+          className="text-carrotorange"
+        >
+          <AlertCircle className="w-4 h-4 mr-2" />
+          <DropdownLabel>
+            Unable to verify profile completion to allow post creation.
+          </DropdownLabel>
         </DropdownItem>
       )
     }

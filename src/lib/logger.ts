@@ -134,6 +134,7 @@ export async function loggerMiddleware(
     })
 
     const response = await handler(req)
+    const responseClone = response.clone()
 
     const endTime = performance.now()
     logger.info(`API Request completed`, {
@@ -141,6 +142,7 @@ export async function loggerMiddleware(
       method: req.method,
       path: req.nextUrl.pathname,
       status: response.status,
+      message: await responseClone.json(),
       duration: `${Math.round(endTime - startTime)}ms`,
     })
 
