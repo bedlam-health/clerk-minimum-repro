@@ -8,7 +8,6 @@ export async function fetchRecentPosts(): Promise<{
   error: string | null
 }> {
   try {
-    // Use the new getFirestoreInstance instead of direct getFirestore
     const db = await getFirestoreInstance()
 
     if (!db) {
