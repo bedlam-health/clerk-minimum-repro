@@ -8,6 +8,7 @@ export async function fetchRecentPosts(): Promise<{
   error: string | null
 }> {
   try {
+    console.log("Fetching posts from Firebase")
     const db = await getFirestoreInstance()
 
     if (!db) {
